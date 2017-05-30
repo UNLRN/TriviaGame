@@ -7181,6 +7181,7 @@ body,html {
     background-color: #2e2831;
     height: auto;
     margin: 10px auto;
+    border-left: 5px #87bba2 solid;
 }
 
 .btn {
@@ -7190,4 +7191,14 @@ body,html {
 
 .progress-bar {
     background-color: #87bba2;
+}
+
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: inside upper-alpha;
+}
+
+ol li {
+    padding: 10px;
 }
