@@ -17,6 +17,7 @@ $(document).ready(function() {
                     if (i === 3) {
                         console.log(results.correct_answer);
                         element.html(results.correct_answer);
+                        element.attr("data", "correct-answer");
                     } else {
                         element.html(results.incorrect_answers[i]);
                     }
@@ -25,8 +26,45 @@ $(document).ready(function() {
         });
     }
 
-    $(".btn").on("click", getQA);
+    function timer() {
+        let progressbar = $(".progress-bar");
+        width = progressbar.attr("data");
+        if (width >= 0) {
+                width -= 5;
+                progressbar.attr("data", width);
+                progressbar.css("width", width + "%");
+        }
+    }
 
+    function timesup() {
+        clearInterval();
+        let CA = $("li[data=correct-answer]");
+        CA.css({ 'background-color':'rgba(240, 247, 238, 1)', 'color':'rgba(46, 40, 49, 1)'});
+    }
+
+    function reset() {
+        let CA = $("li[data=correct-answer]");
+        CA.css({ 'background-color':'rgba(46, 40, 49, 1)', 'color':'rgba(240, 247, 238, 1)'});
+        CA.removeAttr("data");
+    }
+
+
+    function init() {
+        getQA();
+        setInterval(timer, 1000);
+        setTimeout(timesup, 1000 * 20);
+        setTimeout(reset, 1000 * 25);
+    }
+
+    init();
+    
+    $(".btn").on("click", init);
+    $("li").on("click", function(e) {
+        if ($(e.target).attr("data") !== "undefined") {
+            
+        };
+    });
+    
 
 
 });
