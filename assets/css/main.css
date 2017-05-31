@@ -7171,7 +7171,7 @@ body,html {
     margin: 10px;
 }
 
-#question {
+#question,#score {
     background-color: #322e37;
     height: auto;
     width: 100%;
